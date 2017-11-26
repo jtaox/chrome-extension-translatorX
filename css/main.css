@@ -1,0 +1,48 @@
+.translateX{
+    position: absolute;
+    background-color: #fff;
+}
+.tip-container{
+    box-shadow: 0 2px 4px rgba(0,0,0,.2);
+    border: 1px solid rgba(0,0,0,.2);
+    font-size: 12px;
+    line-height: 20px;
+    padding: 5px 0;
+    max-width: 350px;
+}
+.tip-container p{
+    margin: 0 8px;
+}
+.tip-container .tip-arrow{
+    width: 0;
+    height: 0;
+    font-size: 0;
+    line-height: 0;
+    display: block;
+    position: absolute;
+    top: -16px;
+    left: 10px;
+}
+.tip-container .tip-arrow i{
+    width: 0;
+    height: 0;
+    font-size: 0;
+    line-height: 0;
+    display: block;
+    position: absolute;
+    border: 8px solid transparent;
+    border-style: dashed dashed solid;
+    border-bottom-color: #d8d8d8;
+}
+.tip-container .tip-arrow em{
+    width: 0;
+    height: 0;
+    font-size: 0;
+    line-height: 0;
+    display: block;
+    position: absolute;
+    border: 8px solid transparent;
+    border-style: dashed dashed solid;
+    border-bottom-color: #fff;
+    top: 2px;
+}

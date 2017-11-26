@@ -1,0 +1,17 @@
+{
+    "name": "translateX",  // 必要字段
+    "version": "1.0.0",  // 必要字段，规则：用1个到4个数字来表示，中间用点隔开，这些数字必须在0到65535之间，非零数字不能0开头
+    "manifest_version": 2, // 必要字段，必须为2，无引号
+    "description": "一个漂亮的翻译插件~",  // 可选字段，插件描述信息
+    "author": "江涛 jtaobox@gmail.com",  // 可选字段，插件作者信息
+    "content_scripts": [{
+        "js": [ 
+            "js/lib/jquery.min.js", 
+            "js/main.js" 
+        ],
+        "css": [
+            "css/main.css"
+        ],
+        "matches": [ "http://*/*", "https://*/*" ]
+    }]
+}
