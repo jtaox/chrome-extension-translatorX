@@ -46,3 +46,6 @@
     border-bottom-color: #fff;
     top: 2px;
 }
+.hidden{
+    display: none;
+}
