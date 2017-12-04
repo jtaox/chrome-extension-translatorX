@@ -2,6 +2,7 @@ $(function () {
     let tipContent = null;
     let translateX = null;
     $(document.body).on("mouseup", function () {
+        if (tipContent) tipContent.innerHTML = "";
         var select = document.getSelection();
         var selectText = select.toString();
         if (!selectText) {
@@ -10,7 +11,7 @@ $(function () {
         }
         translateX && (translateX.style.display = "block");
         markSelection(selectText);
-        
+
         $.get("https://sp1.baidu.com/5b11fzupBgM18t7jm9iCKT-xh_/sensearch/selecttext", {
             q: selectText,
             _: new Date().getTime()
@@ -24,27 +25,29 @@ $(function () {
                     cont: res
                 }];
             }
-            console.log(tipContent)
             for (var i = 0; i < res.length; i++) {
                 var item = res[i];
-                console.log(item)
                 var p = document.createElement("p");
                 p.innerHTML = item.pre + " " + item.cont;
                 tipContent.appendChild(p);
             }
         });
-    }).on("mousedown", function () {
-        if (tipContent) tipContent.innerHTML = "";
     });
+    window.onscroll = function() {
+        tipContent && (tipContent.innerHTML = "");
+        translateX && 
+        (translateX.style.display == "block") &&
+        (translateX.style.display = "none");
+    };
     var markSelection = (function () {
-    
+
         var markerEl,
             markerId = "sel_" +
             new Date().getTime() + "_" +
             Math.random().toString().substr(2);
-    
+
         var selectionEl;
-    
+
         // 创建dom
         var container = `
             <div class="tip-container">
@@ -56,16 +59,16 @@ $(function () {
                 </div>
             </div>
         `;
-    
+
         selectionEl = document.createElement("div");
         selectionEl.classList.add("translateX");
         selectionEl.innerHTML = container;
-    
+
         return function (selectText) {
             var sel, range;
-    
+
             sel = window.getSelection();
-    
+
             if (sel.getRangeAt) {
                 range = sel.getRangeAt(0).cloneRange();
             } else {
@@ -73,7 +76,7 @@ $(function () {
                 range = document.createRange();
                 range.setStart(sel.anchorNode, sel.anchorOffset);
                 range.setEnd(sel.focusNode, sel.focusOffset);
-    
+
                 // Handle the case when the selection was selected backwards (from the end to the start in the
                 // document)
                 if (range.collapsed !== sel.isCollapsed) {
@@ -81,23 +84,23 @@ $(function () {
                     range.setEnd(sel.anchorNode, sel.anchorOffset);
                 }
             }
-    
+
             range.collapse(false);
-    
+
             markerEl = document.createElement("span");
             markerEl.id = markerId;
             markerEl.appendChild(document.createTextNode(selectText));
             range.insertNode(markerEl);
             var markerElHeigth = markerEl.getBoundingClientRect().height;
             var markerElWidth = markerEl.getBoundingClientRect().width;
-    
+
             if (markerEl) {
                 // Lazily create element to be placed next to the selection
                 document.body.appendChild(selectionEl);
 
                 !tipContent && (tipContent = document.querySelector(".tip-content"));
                 !translateX && (translateX = document.querySelector(".translateX"));
-    
+
                 // Find markerEl position http://www.quirksmode.org/js/findpos.html
                 var obj = markerEl;
                 var left = 0,
