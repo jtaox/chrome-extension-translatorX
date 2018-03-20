@@ -1,5 +1,5 @@
 .translateX{
-    position: absolute;
+    position: fixed;
     background-color: #fff;
 }
 .tip-container{
@@ -9,6 +9,7 @@
     line-height: 20px;
     padding: 5px 0;
     max-width: 350px;
+    min-width: 38px;
 }
 .tip-container p{
     margin: 0 8px;
