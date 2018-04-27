@@ -10,6 +10,7 @@
     padding: 5px 0;
     max-width: 350px;
     min-width: 38px;
+    display: none;
 }
 .tip-container p{
     margin: 0 8px;

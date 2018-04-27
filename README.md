@@ -1,2 +1,2 @@
 # chrome-extension-translatorX
-A nice chrome translation extension~
+一个非常简洁的翻译插件
