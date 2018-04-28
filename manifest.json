@@ -8,6 +8,7 @@
         "js": [ 
             "js/lib/jquery.min.js", 
             "js/lib/Tip.js", 
+            "js/lib/Http.js", 
             "js/main.js" 
         ],
         "css": [

@@ -1,4 +1,8 @@
 const tip = new Tip();
+const http = new Http();
+// test
+http.fetchFromBaidu('hello')
+
 // 监听鼠标抬起 显示tip
 document.body.addEventListener('mouseup', () => {
     // 获取选中文字 以及位置、宽高等信息

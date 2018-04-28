@@ -32,7 +32,7 @@ class Tip {
    * @param {array} eleArr 
    */
   insertToTip(eleArr) {
-    this.tipContainer.innerHTML = eleArr.join()
+    this.tipContainer.innerHTML = eleArr.join('')
   }
   /**
    * 移动tip
@@ -45,7 +45,7 @@ class Tip {
    * 修改tip位置
    * @param {object} param0 
    */
-  modifyTipPosition({top, left, height}) {
+  modifyTipPosition({top, left, height, width}) {
     if (this.tipStyle.display == 'none') 
       this.tipStyle.display = 'block';
     this.tipStyle.top = top + height + 8 + 'px';
