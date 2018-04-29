@@ -14,7 +14,7 @@ class Tip {
     const eleArr = resList.map(item => {
       item.pre || (item.pre = "");
       let p = document.createElement('p');
-      p.innerText = `${item.pre} ${item.cont}`;
+      p.innerText = `${item.pre}  ${item.cont}`;
       return p.outerHTML;
     });
     this.insertToTip(eleArr);
