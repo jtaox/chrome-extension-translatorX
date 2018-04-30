@@ -3,7 +3,7 @@ const googleApi = 'https://translate.google.cn/translate_a/single'
 
 class Http {
   constructor() {
-    // ...
+    this.chineseReg = /^[\u4e00-\u9fa5]+$/
   }
   async fetchFromBaidu(params) {
     if (!this.baiduApi) this.baiduApi = baiduApi
@@ -15,12 +15,14 @@ class Http {
     return await response.json()
   }
 
-  async fetchFromGoogle() {
+  async fetchFromGoogle({ word }) {
     if (!this.googleApi) this.googleApi = googleApi
+    let [sl, tl] = ['zh-CN', 'en']
+    if (!this.chineseReg.test(word.trim())) [sl, tl] = [tl, sl]
     const url = this.getCompleteUrl({ baseUrl: this.googleApi, params: {
-      client: 't',
-      sl: 'en',
-      tl: 'zh-CN',
+      client: 'gtx',
+      sl,
+      tl,
       hl: 'zh-CN',
       dt: 'at',
       dt: 'bd',
@@ -39,7 +41,7 @@ class Http {
       tsel: '6',
       kc: '0',
       tk: '984327.619449',
-      q: 'container',
+      q: word,
     }})
     const response = await fetch(url, {
       method: 'GET'

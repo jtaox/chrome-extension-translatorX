@@ -7,17 +7,30 @@ class Tip {
     window.document.body.append(this.tip);
   }
   /**
-   * 显示tip
+   * 百度api 显示tip
    * @param {object} param0 
    */
-  show({ resList, rect }) {
+  showFromBaiduApi({ resList, rect }) {
     const eleArr = resList.map(item => {
       item.pre || (item.pre = "");
       let p = document.createElement('p');
       p.innerText = `${item.pre}  ${item.cont}`;
       return p.outerHTML;
     });
+    this.opTip({ eleArr, rect })
+  }
+  /**
+   * google api 显示tip
+   */
+  showFromGoogleApi({ result, rect }) {
+    this.opTip({
+      eleArr: [result],
+      rect
+    })
+  }
+  opTip({ eleArr, rect }) {
     this.insertToTip(eleArr);
+    if (this.rect == rect) return
     this.moveToPos(rect);
   }
   /**
@@ -39,6 +52,7 @@ class Tip {
    * @param {object} rect 
    */
   moveToPos(rect) {
+    this.rect = rect
     this.modifyTipPosition(rect);
   }
   /**
