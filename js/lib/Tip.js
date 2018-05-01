@@ -10,26 +10,27 @@ class Tip {
    * 百度api 显示tip
    * @param {object} param0 
    */
-  showFromBaiduApi({ resList, rect }) {
+  showFromBaiduApi({ resList, rect, now }) {
     const eleArr = resList.map(item => {
       item.pre || (item.pre = "");
       let p = document.createElement('p');
       p.innerText = `${item.pre}  ${item.cont}`;
       return p.outerHTML;
     });
-    this.opTip({ eleArr, rect })
+    this.opTip({ eleArr, rect, now })
   }
   /**
    * google api 显示tip
    */
-  showFromGoogleApi({ result, rect }) {
+  showFromGoogleApi({ result, rect, now }) {
     this.opTip({
-      eleArr: [result],
-      rect
+      eleArr: [`<p class="google-result">${result}</p>`],
+      rect,
+      now
     })
   }
-  opTip({ eleArr, rect }) {
-    this.insertToTip(eleArr);
+  opTip({ eleArr, rect, now }) {
+    this.insertToTip(eleArr, now);
     if (this.rect == rect) return
     this.moveToPos(rect);
   }
@@ -44,8 +45,13 @@ class Tip {
    * 向tip填充数据
    * @param {array} eleArr 
    */
-  insertToTip(eleArr) {
-    this.tipContainer.innerHTML = eleArr.join('')
+  insertToTip(eleArr, now) {
+    if (this.now === now) {
+      this.tipContainer.innerHTML += eleArr.join('')
+    } else {
+      this.now = now
+      this.tipContainer.innerHTML = eleArr.join('')
+    }
   }
   /**
    * 移动tip
