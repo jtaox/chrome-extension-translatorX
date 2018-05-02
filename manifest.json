@@ -1,10 +1,10 @@
 {
-    "name": "translateX",  // 必要字段
-    "version": "1.0.0",  // 必要字段，规则：用1个到4个数字来表示，中间用点隔开，这些数字必须在0到65535之间，非零数字不能0开头
-    "manifest_version": 2, // 必要字段，必须为2，无引号
-    "description": "一个漂亮的翻译插件~",  // 可选字段，插件描述信息
-    "permissions": ["storage"],
-    "author": "江涛 jtaobox@gmail.com",  // 可选字段，插件作者信息
+    "name": "translateX",
+    "version": "1.0.0",
+    "manifest_version": 2,
+    "description": "一个漂亮的翻译插件~",
+    "permissions": ["declarativeContent", "storage"],
+    "author": "江涛 jtaobox@gmail.com",
     "content_scripts": [{
         "js": [ 
             "js/lib/jquery.min.js", 
@@ -18,6 +18,20 @@
         "matches": [ "http://*/*", "https://*/*" ]
     }],
     "page_action": {
-        "default_popup": "popup.html"
+        "default_popup": "popup.html",
+        "default_icon": "hello_extensions.png"
+    },
+    "background": {
+        "scripts": ["background.js"],
+        "persistent": true
+      },
+    "commands": {
+        "_execute_browser_action": {
+          "suggested_key": {
+            "default": "Ctrl+Shift+F",
+            "mac": "MacCtrl+Shift+F"
+          },
+          "description": "Opens hello.html"
+        }
     }
 }
