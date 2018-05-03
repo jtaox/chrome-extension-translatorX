@@ -17,14 +17,11 @@
         ],
         "matches": [ "http://*/*", "https://*/*" ]
     }],
-    "page_action": {
-        "default_popup": "popup.html",
-        "default_icon": "hello_extensions.png"
+    "browser_action": {
+        "default_title": "translateX",
+        "default_popup": "popup.html"
     },
-    "background": {
-        "scripts": ["background.js"],
-        "persistent": true
-      },
+    "options_page": "options.html",
     "commands": {
         "_execute_browser_action": {
           "suggested_key": {
