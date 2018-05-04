@@ -2,57 +2,20 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8">
-    <style>
-      #app {
-        width: 200px;
-      }
-      .label {
-        position: relative;
-        padding: 20px 0;
-      }
-      input[type="checkbox"] {
-        opacity: 0;
-        -webkit-appearance: none;
-        display: inline-block;
-        vertical-align: middle;
-        z-index: 100;
-      }
-      label {
-        color: #333;
-        display: inline-block;
-        position: relative;
-        font-size: 16px;
-        padding: 0 0 0 80px;
-        vertical-align: top;
-        cursor: pointer;
-        -webkit-transition: color 0.3s;
-        transition: color 0.3s;
-      }
-      label::before {
-        content: '';
-        border: 4px solid #666;
-        -webkit-transition: opacity 0.3s;
-        transition: opacity 0.3s;
-        width: 20px;
-        height: 20px;
-        top: 50%;
-        transform: translateY(-50%);
-        left: 0;
-        position: absolute;
-        cursor: pointer;
-      }
-    </style>
+    <link rel="stylesheet" href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="./css/popup.css">
   </head>
   <body>
     <div id="app">
       <div class="label baidu-label">
         <input id="baidu" name="baidu" type="checkbox" />
-        <label for="baidu">百度翻译</label>
+        <label for="baidu"><span>百度翻译</span></label>
       </div>
       <div class="label google-label">
         <input id="google" name="google" type="checkbox" />
-        <label for="google">google翻译</label>
+        <label for="google"><span>google翻译</span></label>
       </div>
     </div>
   </body>
+  <script src="./js/popup.js"></script>
 </html>

@@ -7,8 +7,10 @@ document.body.addEventListener('mouseup', async () => {
     let { rect, seleStr } = getSelectPos();
     if (!seleStr) return tip.hide();
     const now = Date.now()
-    googleRequest(seleStr, rect, now)
-    baiduRequest(seleStr, rect, now)
+    chrome.storage.sync.get(['baiduTranslate', 'googleTranslate'], function({ baiduTranslate, googleTranslate }) {
+        googleTranslate && googleRequest(seleStr, rect, now)
+        baiduTranslate && baiduRequest(seleStr, rect, now)
+    });
 });
 // 当滑动时隐藏tip
 document.addEventListener('scroll', () => {

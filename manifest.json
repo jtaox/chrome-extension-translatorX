@@ -3,7 +3,7 @@
     "version": "1.0.0",
     "manifest_version": 2,
     "description": "一个漂亮的翻译插件~",
-    "permissions": ["declarativeContent", "storage"],
+    "permissions": ["storage"],
     "author": "江涛 jtaobox@gmail.com",
     "content_scripts": [{
         "js": [ 
@@ -20,6 +20,10 @@
     "browser_action": {
         "default_title": "translateX",
         "default_popup": "popup.html"
+    },
+    "background": {
+        "scripts": ["background.js"],
+        "persistent": false
     },
     "options_page": "options.html",
     "commands": {
