@@ -11,6 +11,7 @@
     max-width: 350px;
     min-width: 38px;
     display: none;
+    z-index: 99999;
 }
 .tip-container p{
     margin: 0 8px;
