@@ -4,7 +4,7 @@
     "manifest_version": 2,
     "description": "一个漂亮的翻译插件~",
     "permissions": ["storage"],
-    "author": "江涛 jtaobox@gmail.com",
+    "author": "jiangtao",
     "content_scripts": [{
         "js": [ 
             "js/lib/jquery.min.js", 
@@ -25,14 +25,5 @@
         "scripts": ["background.js"],
         "persistent": false
     },
-    "options_page": "options.html",
-    "commands": {
-        "_execute_browser_action": {
-          "suggested_key": {
-            "default": "Ctrl+Shift+F",
-            "mac": "MacCtrl+Shift+F"
-          },
-          "description": "Opens hello.html"
-        }
-    }
+    "options_page": "options.html"
 }
