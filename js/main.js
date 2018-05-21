@@ -46,7 +46,7 @@ async function baiduRequest(word, rect, now) {
 
 function getSelectPos() {
     let selection = window.getSelection();
-    if (!selection.rangeCount) return;
+    if (!selection.rangeCount) return {};
     let range = selection.getRangeAt(0);
     return {
         rect: range.getBoundingClientRect(),
