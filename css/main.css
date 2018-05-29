@@ -15,6 +15,7 @@
 }
 .tip-container p{
     margin: 0 8px !important;
+    color: #333 !important;
 }
 .tip-container .tip-arrow{
     width: 0 !important;
