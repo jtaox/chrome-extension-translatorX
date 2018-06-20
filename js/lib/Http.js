@@ -6,8 +6,8 @@ class Http {
     this.chineseReg = /^[\u4e00-\u9fa5]+$/
   }
   async fetchFromBaidu(params) {
-    if (!this.baiduApi) this.baiduApi = baiduApi
-    if (!params._) params._ = Date.now()
+    !this.baiduApi && (this.baiduApi = baiduApi)
+    !params._ && (params._ = Date.now())
     const url = this.getCompleteUrl({ baseUrl: this.baiduApi, params })
     const response = await fetch(url, {
       method: 'GET'
