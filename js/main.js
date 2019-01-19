@@ -7,6 +7,7 @@ document.body.addEventListener('mouseup', async () => {
     let { rect, seleStr = '' } = getSelectPos();
     if (!seleStr.trim()) return tip.hide();
     const now = Date.now()
+    tip.showEmptyView(rect, now)
     chrome.storage.sync.get(['baiduTranslate', 'googleTranslate'], function({ baiduTranslate, googleTranslate }) {
         googleTranslate && googleRequest(seleStr, rect, now)
         baiduTranslate && baiduRequest(seleStr, rect, now)

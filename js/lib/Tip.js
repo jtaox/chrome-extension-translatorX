@@ -4,6 +4,7 @@ class Tip {
     this.tip = this.createTip();
     this.tipStyle = this.tip.style;
     this.tipContainer = this.tip.querySelector('.tip-content');
+    this.loading = this.tip.querySelector('#tip-loading-container')
     window.document.body.append(this.tip);
   }
   /**
@@ -30,9 +31,15 @@ class Tip {
     })
   }
   opTip({ eleArr, rect, now }) {
+    this.loading.style.display = "none"
     this.insertToTip(eleArr, now);
     if (this.rect == rect) return
     this.moveToPos(rect);
+  }
+  showEmptyView(rect, now) {
+    this.moveToPos(rect)
+    this.insertToTip([], now)
+    this.loading.style.display = "flex"
   }
   /**
    * 隐藏tip
@@ -79,6 +86,11 @@ class Tip {
     let container = `
     <div class="tip-container">
         <div class="tip-content">
+        </div>
+        <div class="bouncing-loader" id="tip-loading-container">
+          <div></div>
+          <div></div>
+          <div></div>
         </div>
         <div class="tip-arrow">
             <i></i>
