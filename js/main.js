@@ -40,7 +40,7 @@ async function googleRequest(word, rect, now) {
 
 async function baiduRequest(word, rect, now) {
     const baiduResult = await http.fetchFromBaidu({ q: word, _: Date.now() })
-    if (baiduResult.errno > 0) return;
+    if (baiduResult.errno > 0) return tip.showErrorView({msg: baiduResult.error, now, rect});
     let resList = baiduResult.data.result;
     if (!Array.isArray(resList)) resList = [{
         pre: "",

@@ -7,6 +7,7 @@ class Tip {
     this.loading = this.tip.querySelector('#tip-loading-container')
     window.document.body.append(this.tip);
   }
+
   /**
    * 百度api 显示tip
    * @param {object} param0 
@@ -20,6 +21,7 @@ class Tip {
     });
     this.opTip({ eleArr, rect, now })
   }
+
   /**
    * google api 显示tip
    */
@@ -30,17 +32,25 @@ class Tip {
       now
     })
   }
+
+  showErrorView({msg, now}) {
+    this.insertToTip([`<p>${msg}</p>`], now)
+    this.loading.style.display = "none"
+  }
+
   opTip({ eleArr, rect, now }) {
     this.loading.style.display = "none"
     this.insertToTip(eleArr, now);
     if (this.rect == rect) return
     this.moveToPos(rect);
   }
+
   showEmptyView(rect, now) {
     this.moveToPos(rect)
     this.insertToTip([], now)
     this.loading.style.display = "flex"
   }
+
   /**
    * 隐藏tip
    */
@@ -48,6 +58,7 @@ class Tip {
     if (this.tipStyle.display != 'none')
       this.tipStyle.display = 'none'; 
   }
+
   /**
    * 向tip填充数据
    * @param {array} eleArr 
@@ -60,6 +71,7 @@ class Tip {
       this.tipContainer.innerHTML = eleArr.join('')
     }
   }
+
   /**
    * 移动tip
    * @param {object} rect 
@@ -68,16 +80,18 @@ class Tip {
     this.rect = rect
     this.modifyTipPosition(rect);
   }
+
   /**
    * 修改tip位置
    * @param {object} param0 
    */
   modifyTipPosition({top, left, height, width}) {
-    if (this.tipStyle.display == 'none') 
+    if (!this.tipStyle.display || this.tipStyle.display == 'none') 
       this.tipStyle.display = 'block';
     this.tipStyle.top = top + height + 8 + 'px';
     this.tipStyle.left = left + 'px';
   }
+
   /**
    * 创建tip dom
    */
