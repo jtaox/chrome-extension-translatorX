@@ -1,17 +1,23 @@
 const tip = new Tip();
 const http = new Http();
 
+const DURATION = 200
+
+const timer = null
 // 监听鼠标抬起 显示tip
 document.body.addEventListener('mouseup', async () => {
-    // 获取选中文字 以及位置、宽高等信息
-    let { rect, seleStr = '' } = getSelectPos();
-    if (!seleStr.trim()) return tip.hide();
-    const now = Date.now()
-    tip.showEmptyView(rect, now)
-    chrome.storage.sync.get(['baiduTranslate', 'googleTranslate'], function({ baiduTranslate, googleTranslate }) {
-        googleTranslate && googleRequest(seleStr, rect, now)
-        baiduTranslate && baiduRequest(seleStr, rect, now)
-    });
+    clearTimeout(timer)
+    setTimeout(() => {
+        // 获取选中文字 以及位置、宽高等信息
+        let { rect, seleStr = '' } = getSelectPos();
+        if (!seleStr.trim()) return tip.hide();
+        const now = Date.now()
+        tip.showEmptyView(rect, now)
+        chrome.storage.sync.get(['baiduTranslate', 'googleTranslate'], function({ baiduTranslate, googleTranslate }) {
+            googleTranslate && googleRequest(seleStr, rect, now)
+            baiduTranslate && baiduRequest(seleStr, rect, now)
+        });
+    }, DURATION)
 });
 // 当滑动时隐藏tip
 document.addEventListener('scroll', () => {
