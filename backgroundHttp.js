@@ -56,16 +56,17 @@ class Http {
   }
 
   async googleRequest(word) {
-    const googleResult = await this.fetchFromGoogle({ word })
-    let result = 'google翻译异常'
+    const googleResult = await this.fetchFromGoogle({ word }) || []
+    let result = 'google翻译结果解析错误'
     try {
-        result = getWord(googleResult, 3)
+      const [resultArray = []] = googleResult
+
+      result = resultArray.reduce((pre, cur) => {
+        return pre + (cur[0] || '')
+      }, "")
+
     } catch(e) {}
-    function getWord(arr, count) {
-        count--
-        if (count == 0) return arr[0]
-        return getWord(arr[0], count)
-    }
+
     return result
 }
 
