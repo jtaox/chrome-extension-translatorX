@@ -9,7 +9,6 @@
         "js": [ 
             "js/lib/jquery.min.js", 
             "js/lib/Tip.js", 
-            "js/lib/Http.js", 
             "js/main.js" 
         ],
         "css": [
@@ -22,7 +21,7 @@
         "default_popup": "popup.html"
     },
     "background": {
-        "scripts": ["background.js"],
+        "scripts": ["backgroundHttp.js", "background.js"],
         "persistent": false
     },
     "options_page": "options.html"
