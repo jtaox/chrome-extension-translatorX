@@ -9,7 +9,7 @@ chrome.runtime.onInstalled.addListener(function() {
 });
 
 chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
-  const select = request.select || ""
+  const select = (request.select || "").replace(/\n/g,"")
 
   Promise.all([http.baiduRequest(select), http.googleRequest(select)]).then(([baidu, google]) => {
     sendResponse({baidu, google})
