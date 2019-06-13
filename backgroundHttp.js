@@ -46,7 +46,7 @@ class Http {
     const response = await fetch(url, {
       method: 'GET'
     })
-    return await response.json()
+    return await response.json().catch(() => ({}))
   }
 
   getCompleteUrl({ baseUrl, params }) {
