@@ -112,7 +112,12 @@ class Tip {
         </div>
     </div>
     `;
-    return $(container).addClass('translateX')[0];
+    const dom = $(container).addClass('translateX')[0]
+
+    dom.addEventListener('mousedown', (event) => event.stopPropagation())
+    dom.addEventListener('mouseup', (event) => event.stopPropagation())
+
+    return dom;
   }
 
  
